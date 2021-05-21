@@ -3,7 +3,7 @@ lazy val root = (project in file("."))
     name := "ipaddr",
     organization := "com.risksense",
     version := "1.0.2",
-    scalaVersion := "2.13.5",
+    scalaVersion := "2.13.6",
     scalacOptions ++= Seq(
       "-feature",
       "-deprecation",

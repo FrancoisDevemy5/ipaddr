@@ -209,15 +209,15 @@ case class IpSet private[ipaddr] (networkSeq: IndexedSeq[IpNetwork]) // scalasty
   }
 
   def iterator: Iterator[IpNetwork] = {
-    this.networkSeq.toIterator
+    this.networkSeq.iterator
   }
 
   def keysIteratorFrom(start: IpNetwork): Iterator[IpNetwork] = {
     val matchFoundAt = this.networkSeq.indexWhere(_ >= start)
     if (matchFoundAt < 0) {
-      Nil.toIterator
+      Nil.iterator
     } else {
-      this.networkSeq.drop(matchFoundAt).toIterator
+      this.networkSeq.drop(matchFoundAt).iterator
     }
   }
 

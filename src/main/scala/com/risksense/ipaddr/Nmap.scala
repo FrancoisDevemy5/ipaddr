@@ -20,7 +20,7 @@ import scala.annotation.tailrec
 import scala.collection.SortedSet
 
 /** Contains methods for translating and operating on Nmap addresses. */
-object Nmap extends {
+object Nmap {
 
   /** Checks if nmap address is valid.
     *

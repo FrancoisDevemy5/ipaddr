@@ -57,9 +57,10 @@ import scala.annotation.tailrec
 object IpGlob {
 
   private val Wildcard = "*"
-  private val octet1Regex = """(25[0-4]|2[0-4][0-9]|[01]?[0-9][0-9]?)"""
-  private val octet2Regex = """(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)"""
-  private val octetRegex = s"$octet1Regex-$octet2Regex".r
+  private val octet1Pat = """(25[0-4]|2[0-4][0-9]|[01]?[0-9][0-9]?)"""
+  private val octet2Pat = """(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)"""
+  private val octetRegex = s"$octet1Pat-$octet2Pat".r
+  private val octet2Regex = octet2Pat.r
 
   /** Converts IpGlob to [[IpRange]]
     *
@@ -237,7 +238,7 @@ object IpGlob {
       } else {
         (false, true, false)
       }
-    case octet2Regex.r(_*) => (!seenHyphen && !seenAsterisk, false, false)
+    case octet2Regex(_*) => (!seenHyphen && !seenAsterisk, false, false)
     case Wildcard => (true, false, true)
     case _ => (false, false, false)
   }

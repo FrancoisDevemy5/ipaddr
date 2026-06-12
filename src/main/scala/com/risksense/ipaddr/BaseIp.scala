@@ -82,11 +82,11 @@ object BaseIp extends StrictLogging {
     * @return A stream of IpAddress objects. An empty stream is returned if the step is 0 or if both
     *         IpAddress have different version.
     */
-  def addressStream(start: IpAddress, end: IpAddress, step: Int = 1): Stream[IpAddress] = {
+  def addressStream(start: IpAddress, end: IpAddress, step: Int = 1): LazyList[IpAddress] = {
     if ((start.version != end.version) || (step == 0)) {
-      Stream()
+      LazyList.empty
     } else {
-      Range.Long.inclusive(start.numerical, end.numerical, step).toStream.map { ipNum =>
+      Range.Long.inclusive(start.numerical, end.numerical, step).to(LazyList).map { ipNum =>
         IpAddress(ipNum)
       }
     }

@@ -124,11 +124,11 @@ class IpNetwork private[ipaddr](
   }
 
   /** All hosts in this Network. Includes network address and broadcast address as well. */
-  lazy val allHosts: Stream[IpAddress] = {
+  lazy val allHosts: LazyList[IpAddress] = {
     if (this.version == 4) {
       BaseIp.addressStream(IpAddress(this.first), IpAddress(this.last))
     } else {
-      Stream()
+      LazyList.empty
     }
   }
 

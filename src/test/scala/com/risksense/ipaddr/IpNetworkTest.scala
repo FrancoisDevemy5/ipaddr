@@ -97,7 +97,7 @@ class IpNetworkTest extends UnitSpec {
   }
 
   it should "perform allHosts operation" in {
-    IpNetwork("192.168.1.1/30").allHosts.force should be(
+    IpNetwork("192.168.1.1/30").allHosts.toSeq should be(
       Seq(IpAddress("192.168.1.0"), IpAddress("192.168.1.1"),
           IpAddress("192.168.1.2"), IpAddress("192.168.1.3"))
     )

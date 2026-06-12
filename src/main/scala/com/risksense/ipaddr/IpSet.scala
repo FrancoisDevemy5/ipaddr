@@ -252,7 +252,7 @@ object IpSet extends SpecificIterableFactory[IpNetwork, IpSet] {
 
   def apply(ipSet: IpSet): IpSet = IpSet(ipSet.networkSeq.toSeq)
 
-  def apply(netSeq: Seq[IpNetwork]): IpSet = {
+  override def apply(netSeq: Seq[IpNetwork]): IpSet = {
     if (netSeq.isEmpty) {
       apply()
     } else {

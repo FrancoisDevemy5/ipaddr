@@ -73,7 +73,7 @@ trait IpAddressFormat {
     * @return A hexadecimal string representation of this IP address.
     */
   def hex: String = {
-    val res = this.words.map { w: Int =>
+    val res = this.words.map { (w: Int) =>
       val hex = Integer.toHexString(w)
       if (hex.length < 2) {
         this.Zero + hex

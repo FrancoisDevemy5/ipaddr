@@ -25,13 +25,13 @@ package com.risksense.ipaddr
   */
 case class Ipv4 private[ipaddr](addr: String) extends IpAddress {
 
-  lazy val binary: String = bits()
   val width: Int = Ipv4.width
   val wordSize: Int = Ipv4.wordSize
   val delimiter: String = Ipv4.wordSep
   val familyName = "IPv4"
   val version: Int = Ipv4.version
   val words: Seq[Int] = addr.split('.').map(BaseIp.StringToInt).toSeq
+  val binary: String = bits()
 
   def bits(d: String = ""): String = numToBinary(numerical, d)
 

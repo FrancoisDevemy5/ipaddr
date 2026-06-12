@@ -93,7 +93,7 @@ class IpNetworkTest extends UnitSpec {
   it should "perform all comparison operations" in {
     (net1 == net2) should be(true)
     (net1 == net3) should be(false)
-    (net1 == "1.2.3.4") should be(false)
+    net1.equals("1.2.3.4") should be(false)
   }
 
   it should "perform allHosts operation" in {
